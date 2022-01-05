@@ -1,16 +1,22 @@
-<h4> Enter a food to see if it is vegan: </h4>
+<h4> Enter a food to see if it is vegan! </h4>
+
+<br />
+
 <%= form_tag url: "/foods", method: :post do |form| %>
   <%= text_field_tag :ingredient, nil, class: "form-control", placeholder: "Soy", autofocus: true%>
+  <br />
   <%= submit_tag "Submit", class:"btn btn-primary" %>
-<% end %> 
+<% end %>
 
 <% if Food.all.count > 0 %>
-<p> You Entered: <%= @food.name.capitalize%> </p>
-<p> Vegan: 
+  <p> You Entered: <%= @food.name.capitalize%> </p>
+
+  <p> <strong>Vegan</strong>:
   <%= @food.is_vegan ? "Yes!" : "Nope!" %>
-</p>
+  </p>
+
 <% else %>
-<p> Enter a food! </p>
+  <p> Enter a food! </p>
 <%end %>
 
 <h4>Foods: </h4>
@@ -23,16 +29,11 @@
     </tr>
   </thead>
   <tbody>
-  <% @foods.each do |food| %>
-    <tr>
-      <td><%= food.name.capitalize %></td>
-      <td><%= food.is_vegan.to_s.capitalize %></td>
-    </tr>
+    <% @foods.each do |food| %>
+      <tr>
+        <td><%= food.name.capitalize %></td>
+        <td><%= food.is_vegan.to_s.capitalize %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>
-
-
-
-
-
