@@ -57,7 +57,7 @@
         <td><%= food.is_vegan.to_s.capitalize %></td>
         <td><%= food.calories %></td>
         <td>
-          <%= link_to "Delete", food_path(food), method: :delete, data: { confirm: "Are you sure tyou want to delete #{food.name}?" } %> |
+          <%= link_to "Delete", food_path(food), method: :delete, data: { confirm: "Are you sure you want to delete #{food.name}?" } %> |
           <%= link_to "Edit", edit_food_path(food) %>
         </td>
       </tr>

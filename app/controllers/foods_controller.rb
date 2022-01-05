@@ -8,8 +8,11 @@ class FoodsController < ApplicationController
     @response = HTTParty.get("https://is-vegan.netlify.app/.netlify/functions/api?ingredients=#{params[:food][:name]}")
     parsed_response = JSON.parse(@response.parsed_response)
 
-    food = Food.create(name: parsed_response["checkedIngredient"], is_vegan: parsed_response["isVeganSafe"], calories: rand(8) * 10.0)
+    food = Food.new(name: parsed_response["checkedIngredient"], is_vegan: parsed_response["isVeganSafe"], calories: rand(8) * 10.0)
 
+    if !food.save
+      flash[:notice] = food.errors.full_messages.to_sentence
+    end
 
     redirect_to root_path
   end
