@@ -3,7 +3,7 @@
 <br />
 
 <%= form_tag url: "/foods", method: :post do |form| %>
-  <%= text_field_tag :ingredient, nil, class: "form-control", placeholder: "Soy", autofocus: true%>
+  <%= text_field_tag :ingredient, nil, class: "form-control", placeholder: "Soy", autofocus: true %>
   <br />
   <%= submit_tag "Submit", class:"btn btn-primary" %>
 <% end %>
@@ -26,6 +26,7 @@
     <tr>
       <th scope="col">Food</th>
       <th scope="col">Vegan</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -33,6 +34,7 @@
       <tr>
         <td><%= food.name.capitalize %></td>
         <td><%= food.is_vegan.to_s.capitalize %></td>
+        <td><%= link_to "Delete", food_path(food), method: :delete %></td>
       </tr>
     <% end %>
   </tbody>
