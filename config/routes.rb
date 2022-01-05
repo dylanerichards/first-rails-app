@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get "/", to: "foods#index"
   post "/", to: "foods#create"
 
+  root to: "foods#index"
+
 
   resources :foods
 end
