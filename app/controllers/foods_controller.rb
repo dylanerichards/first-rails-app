@@ -5,7 +5,7 @@ class FoodsController < ApplicationController
   end
 
   def create
-    @response = HTTParty.get("https://is-vegan.netlify.app/.netlify/functions/api?ingredients=#{params[:ingredient]}")
+    @response = HTTParty.get("https://is-vegan.netlify.app/.netlify/functions/api?ingredients=#{params[:food][:name]}")
     parsed_response = JSON.parse(@response.parsed_response)
 
     food = Food.create(name: parsed_response["checkedIngredient"], is_vegan: parsed_response["isVeganSafe"], calories: rand(8) * 10.0)
