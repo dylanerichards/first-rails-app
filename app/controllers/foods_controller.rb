@@ -36,6 +36,8 @@ class FoodsController < ApplicationController
     food = Food.find(params[:id])
     food.update(food_params)
 
+    flash[:notice] = "You've successfully edited #{food.name}"
+
     redirect_to root_path
   end
 
