@@ -19,6 +19,8 @@ class FoodsController < ApplicationController
 
     food.destroy
 
+    flash[:notice] = "You've successfully deleted #{food.name}"
+
     redirect_to :back
   end
 
